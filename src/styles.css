@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Playfair Display - font*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;800&display=swap');
+@font-face {
+    font-family: "Goudart";
+    src: local("Goudart"), url(./assets/fonts/goudart/Goudart.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "Bebas Neue";
+    src: local("Bebas Neue"), url(./assets/fonts/bebas-neue/BebasNeue-Regular.otf) format("truetype");
+}
+
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, .1)), url('./assets/pictures/pexels-alex-conchillos-3941855.jpg');
+    background-repeat:no-repeat;
+    background-position: center;
+}

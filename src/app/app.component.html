@@ -1,0 +1,60 @@
+<div *ngFor="let forecast of weatherHourly">
+        {{ forecast.utcTime.getCurrentHourlyWeather() }}
+</div>
+<p>{{date |  date: 'MMM d, y, h:mm'}}</p>
+
+<div class="background">
+    <div class="dropdown">
+        <button class="dropbtn">City</button>
+        <div class="dropdown-content">
+            <a href="#">Hrodno</a>
+            <a href="#">Brest</a>
+            <a href="#">Minsk</a>
+        </div>
+    </div>
+
+    <div class="time">
+        {{time}}
+    </div>
+
+    <div class="grid-container">
+        <div class="container grid-item1">
+            <p *ngIf="weather.length == 0">Searching...</p>
+            <div *ngIf="weather.length > 0">
+                <table class="first-table">
+                    <thead></thead>
+                    <tbody>
+                        <tr *ngFor="let forecast of weatherHourly">
+                            <td>
+                                <img [src]="forecast.iconLink" />
+                                <p>{{ forecast.temperature | slice: 0:2 }} C°</p>
+                                <p>{{ forecast.utcTime | date: 'HH' }}:00</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="container_two grid-item2">
+            <p *ngIf="weather.length == 0">Searching...</p>
+            <div *ngIf="weather.length > 0">
+                <table class="second-table">
+                    <div class="title-text">
+                        Week forecast for current location
+                    </div>
+                    <thead></thead>
+                    <tbody>
+                        <tr>
+                            <td *ngFor="let forecast of weather">
+                                <img [src]="forecast.iconLink" />
+                                <p>{{ forecast.highTemperature | slice: 0:2}} C°</p>
+                                <p>{{ forecast.utcTime | moment }}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
