@@ -1,0 +1,32 @@
+export interface Iforecast{
+    airDescription: string,
+    airInfo: string,
+    comfort: string,
+    dayOfWeek: string,
+    daylight: string,
+    description: string,
+    dewPoint: string,
+    humidity: string,
+    icon: string,
+    iconLink: string,
+    iconName: string,
+    localTime: string,
+    localTimeFormat: string,
+    precipitationDesc: string,
+    precipitationProbability: string,
+    rainFall: string,
+    skyDescription: string,
+    skyInfo: string,
+    snowFall: string,
+    temperature: string,
+    temperatureDesc: string,
+    utcTime: string,
+    visibility: string,
+    weekday: string,
+    windDesc: string,
+    windDescShort: string,
+    windDirection: string,
+    windSpeed: string
+}
+
+

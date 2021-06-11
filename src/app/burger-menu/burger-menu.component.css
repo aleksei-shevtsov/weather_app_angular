@@ -1,0 +1,109 @@
+.header_burger {
+  display: block;
+  position: fixed;
+  right: 55px;
+  top: 2%;
+  width: 65px;
+  height: 65px;
+  z-index: 50;
+}
+/* <section> Animation of burger below */
+  .header_burger.active{
+    height: 65px;
+  }
+  .header_burger.active:before {
+    transform: rotate(45deg);
+    top: 29px;
+    background-color: wheat;
+    transition: all 0.7s ease 0s;
+  }
+
+  .header_burger.active:after {
+    transform: rotate(-45deg);
+    bottom: 14px;
+    background-color: wheat;
+    transition: all 0.7s ease 0s;
+  }
+
+  .header_burger.active span {
+    transform: scale(0);
+  }
+/* <section> Animation of burger above */
+
+.header_burger span {
+  position: absolute;
+  background-color: black;
+  left: 0;
+  width: 65px;
+  height: 2px;
+  top: 14px;
+}
+
+.header_burger:before, .header_burger:after {
+  content: '';
+  background-color: black;
+  position: absolute;
+  width: 65px;
+  height: 2px;
+  left: 0;
+}
+
+.header_burger:before {
+  top: 0;
+}
+
+.header_burger:after {
+  bottom: 0;
+  top: 29px;
+}
+
+.header_menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 12em;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1;
+  transition: rigth 2s;
+}
+
+.header_menu.active {
+  animation-name: showSidebar;
+  animation-duration: 1s;
+}
+@keyframes showSidebar {
+  from {
+    right: -192px;
+  }
+  to {
+    right: 0px;
+  }
+}
+
+.active {
+  display: block!important;
+}
+
+.header_list li {
+  list-style: none;
+  margin: 0 0 20px 0px;
+}
+
+.header_list {
+  font-family: 'Playfair Display', serif;
+  position: absolute;
+  top: 10%;
+  right: 49px;
+  display: block;
+  text-align: center;
+}
+
+.header_link {
+  cursor: pointer;
+  color: wheat;
+  text-transform: uppercase;
+  font-size: 18px;
+  text-decoration: none;
+}

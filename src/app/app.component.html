@@ -1,17 +1,7 @@
-<div *ngFor="let forecast of weatherHourly">
-        {{ forecast.utcTime.getCurrentHourlyWeather() }}
-</div>
-<p>{{date |  date: 'MMM d, y, h:mm'}}</p>
 
-<div class="background">
-    <div class="dropdown">
-        <button class="dropbtn">City</button>
-        <div class="dropdown-content">
-            <a href="#">Hrodno</a>
-            <a href="#">Brest</a>
-            <a href="#">Minsk</a>
-        </div>
-    </div>
+<div class="wrapper">
+
+    <app-burger-menu (newItemEvent)="getHourlyAndDailyResponse($event)"></app-burger-menu> 
 
     <div class="time">
         {{time}}
@@ -24,13 +14,13 @@
                 <table class="first-table">
                     <thead></thead>
                     <tbody>
-                        <tr *ngFor="let forecast of weatherHourly">
-                            <td>
+                        <td *ngFor="let forecast of weatherHourly">
+                            <tr class="hour-element">
                                 <img [src]="forecast.iconLink" />
-                                <p>{{ forecast.temperature | slice: 0:2 }} C°</p>
+                                <p>{{ forecast.temperature | slice: 0:2 }}°</p>
                                 <p>{{ forecast.utcTime | date: 'HH' }}:00</p>
-                            </td>
-                        </tr>
+                            </tr>
+                        </td>
                     </tbody>
                 </table>
             </div>
@@ -41,15 +31,19 @@
             <div *ngIf="weather.length > 0">
                 <table class="second-table">
                     <div class="title-text">
-                        Week forecast for current location
+                        Week forecast for current location {{nothing('---')}}
                     </div>
                     <thead></thead>
                     <tbody>
-                        <tr>
-                            <td *ngFor="let forecast of weather">
-                                <img [src]="forecast.iconLink" />
-                                <p>{{ forecast.highTemperature | slice: 0:2}} C°</p>
+                        <tr *ngFor="let forecast of weather" class="flex-container" id="border_style">
+                            <td class="flex-item">
                                 <p>{{ forecast.utcTime | moment }}</p>
+                            </td>
+                            <td class="flex-item">
+                                <img [src]="forecast.iconLink" class="icon" />
+                            </td>
+                            <td class="flex-item">
+                                <p>{{ forecast.highTemperature | slice: 0:2}} C°</p>
                             </td>
                         </tr>
                     </tbody>

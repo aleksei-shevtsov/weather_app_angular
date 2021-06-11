@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { WeatherApiService } from './services/weather-api.service'
 import { Observable } from 'rxjs';
+import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
+import { IforecastLocation } from './model/IforecastLocation';
+import { Iforecast } from './model/Iforecast'
 
 @Component({
     selector: 'app-root',
@@ -12,61 +15,84 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
 
 
-
-    public weather: any;
-    public weatherHourly: any;
-    public date: Date = new Date();
+    public weather: any[] = [];
+    public weatherHourly: any[] = [];
 
     public time: string | undefined;
 
     public constructor(private http: HttpClient, private weatherApiService: WeatherApiService) {
-
-        this.weather = [];
-
 
         setInterval(() => {
             this.time = new Date().toLocaleTimeString('ru-Ru');
         }, 1000)
     }
 
+    getCurrentHourlyWeather(): void {
+        const startDate: number = new Date().getTime();
+        const finalDate: number = startDate + (12 * 60 * 60 * 1000);
+        this.weatherHourly = (this.weatherHourly as Iforecast[]).filter((v) => new Date(v.utcTime).getTime() > startDate && new Date(v.utcTime).getTime() <= finalDate)
+    }
+
+
+
     public ngOnInit() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
-                this.getWeatherByCoordinates(position.coords)
-                this.getWeatherHourlyByCoordinates(position.coords);
+                this.getWeatherByCoordinates_component(position.coords)
+                this.getWeatherHourlyByCoordinates_component(position.coords);
             });
         } else {
             console.error("The browser does not support geolocation...");
         }
     }
 
-    getWeatherByCoordinates(coordinates: GeolocationCoordinates): void {
-        this.weatherApiService.getWeatherByCoordinates(coordinates)
-            .subscribe(result => {
-                this.weather = result.forecast.slice(0, 7);  // take 7 elements
-            }, error => {
-                console.error(error);
-            });
-
-
-    }
-
-    getWeatherHourlyByCoordinates(coordinates: GeolocationCoordinates): void {
-        this.weatherApiService.getWeatherHourlyByCoordinates(coordinates)
-            .subscribe(result => {
-                this.weatherHourly = result.forecast;
+    getWeatherByCoordinates_component(coordinates: GeolocationCoordinates): void {
+        this.weatherApiService.getWeatherByCoordinates_service(coordinates)
+            .subscribe((weatherByCoordinates_serviceResult: IforecastLocation)=> {
+                this.weather = weatherByCoordinates_serviceResult.forecast.slice(0, 7);  // take 7 elements
             }, error => {
                 console.error(error);
             });
     }
 
-    getCurrentHourlyWeather() {
-        if ((this.date.getTime()) == (this.weatherHourly.forescast.getTime())) return this.weatherHourly.forecast.utcTime.getTime()
+    getWeatherHourlyByCoordinates_component(coordinates: GeolocationCoordinates): void {
+        this.weatherApiService.getWeatherHourlyByCoordinates_service(coordinates)
+            .subscribe(weatherHourlyByCoordinates_serviceResult => {
+                this.weatherHourly = weatherHourlyByCoordinates_serviceResult.forecast;
+                this.getCurrentHourlyWeather();
+            }, error => {
+                console.error(error);
+            });
     }
 
+    getResponseHourlyByCityName(cityName: string): void {
+        this.weatherApiService.getWeatherHourlyByName_service(cityName)
+            .subscribe((getWeatherHourlyByName_serviceResult: IforecastLocation) => {
+                this.weatherHourly = getWeatherHourlyByName_serviceResult.forecast;
+                this.getCurrentHourlyWeather()
+            })
+    }
 
+    getResponseByCityName(cityName: string): void {
+        var city = cityName;
+        this.weatherApiService.getWeatherByName_service(cityName)
+            .subscribe((getWeatherByName_serviceResult: IforecastLocation) => {
+                this.weather = getWeatherByName_serviceResult.forecast.slice(0, 7);
+            })
+    }
 
+    getHourlyAndDailyResponse(event: string) {
+        this.getResponseByCityName(event);
+        this.getResponseHourlyByCityName(event)
+    }
+
+    nothing(cityName:string) {
+        return cityName
+    }
 }
+
+
+
 
 // grodno - 53.669852, 23.822354
 // brest - 52.099743, 23.763865

@@ -3,6 +3,7 @@
 /* Playfair Display - font*/
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;800&display=swap');
+
 @font-face {
     font-family: "Goudart";
     src: local("Goudart"), url(./assets/fonts/goudart/Goudart.otf) format("truetype");

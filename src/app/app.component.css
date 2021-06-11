@@ -1,5 +1,3 @@
-
-
 .time {
   font-family: "Bebas Neue";
   font-size: 9rem;
@@ -8,6 +6,71 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%, 43%)
+}
+
+.header_burger {
+  display: block;
+  position: fixed;
+  right: 10px;
+  width: 30px;
+  height: 20px;
+  z-index: 50;
+}
+
+.header_burger span{
+  position: absolute;
+  background-color: #fff;
+  left: 0;
+  width: 65px;
+  height: 2px;
+  top: 14px;
+}
+
+.header_burger:before,
+.header_burger:after {
+  content: '';
+  background-color: #fff;
+  position: absolute;
+  width: 65px;
+  height: 2px;
+  left: 0;
+}
+
+.header_burger:before {
+  top: 0;
+}
+
+.header_burger:after {
+  bottom: -10px;
+}
+
+.header_menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: black; */
+
+}
+
+.header_list li {
+  list-style: none;
+  margin: 0 0 20px 0px;
+}
+
+.header_list {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  display: block;
+}
+
+.header_link {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 18px;
+  text-decoration: none;
 }
 
 /* Style The Dropdown Button */
@@ -25,6 +88,7 @@
 
 .dropdown {
   position: absolute;
+  right: 10px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -68,33 +132,36 @@
 .container {
   font-size: 1.5rem;
   font-family: "Bebas Neue";
-  background-color: rgba(210,209,209, 0.5);
-  width: 24%;
-  padding: 20px 20px;
+  background-color: rgba(210, 209, 209, 0.5);
+  padding: 10px 10px;
   border: 1px solid #CCC;
   border-radius: 15px;
-  margin: 0 auto;
+  margin: 0 5% 0 5%;
   display: inline-block;
-  transform: translate(0%, 15%);
+  transform: translate(0%, 90%);
   position: relative;
 }
 
-.container[_ngcontent-mxe-c11]{
+.container[_ngcontent-mxe-c11] {
   line-height: 0.3;
 }
 
 .container_two {
   font-family: "Bebas Neue";
-  background-color: rgba(210,209,209, 0.5);
-  width: 75%;
-  padding: 70px 20px 20px 0;
+  background-color: rgba(210, 209, 209, 0.5);
+  padding: 135px 35px 20px 35px;
   border: 1px solid #CCC;
   border-radius: 15px;
-  margin: 2em 0 13em 0;
-  left: 50%;
+  margin: 2em 5% 13em 5%;
   display: inline-block;
-  transform: translate(-50%, 72%);
+  transform: translate(0%, 25%);
   position: relative;
+}
+
+#border_style {
+  border-style: solid none none none;
+  border-width: 1px;
+  border-color: #595959;
 }
 
 .title-text {
@@ -103,7 +170,7 @@
   margin: 0;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -135%)
+  transform: translate(-50%, -228%)
 }
 
 .first-table {
@@ -118,11 +185,11 @@
 }
 
 tr {
-	line-height: 0.3;
+  line-height: 0.3;
 }
 
 td {
-	line-height: 0.3;
+  line-height: 0.3;
 }
 
 .grid-item1 {
@@ -135,7 +202,25 @@ td {
 
 .grid-container {
   display: grid;
-  grid-template-areas: 
-  'first'
-  'second';
+  grid-template-areas: "first" "second";
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 2em;
+}
+
+.flex-item {
+  flex-grow: 1
+}
+
+.hour-element {
+  position: relative;
+  left: 20px;
+}
+
+.icon {
+  position: relative;
+  margin: 10px 0 0 0;
 }

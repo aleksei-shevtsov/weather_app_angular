@@ -4,16 +4,21 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MomentPipe } from './moment.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
+
 
 @NgModule({
     declarations: [
         AppComponent,
-        MomentPipe
+        MomentPipe,
+        BurgerMenuComponent,
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
-        HttpClientJsonpModule
+        HttpClientJsonpModule,
+        BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

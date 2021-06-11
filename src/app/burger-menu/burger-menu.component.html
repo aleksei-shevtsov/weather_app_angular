@@ -1,0 +1,19 @@
+<div>
+    <div (click)="toggleClick($event, toggleMenu, toggleBurger)" class="header_burger" #toggleBurger>
+        <span></span>
+    </div>
+
+    <nav class="header_menu" #toggleMenu>
+        <ul class="header_list">
+            <li>
+                <span (click)="getNameOfCity('Hrodno')" class="header_link hrodno">Hrodno</span>
+            </li>
+            <li>
+                <span (click)="getNameOfCity('Brest')" class="header_link brest">Brest</span>
+            </li>
+            <li>
+                <span (click)="getNameOfCity('Minsk')" class="header_link minsk">Minsk</span>
+            </li>
+        </ul>
+    </nav>
+</div> 
