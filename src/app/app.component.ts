@@ -14,7 +14,7 @@ import { Iforecast } from './model/Iforecast'
 })
 export class AppComponent implements OnInit {
 
-
+    public city = "";
     public weather: any[] = [];
     public weatherHourly: any[] = [];
 
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
 
     getWeatherByCoordinates_component(coordinates: GeolocationCoordinates): void {
         this.weatherApiService.getWeatherByCoordinates_service(coordinates)
-            .subscribe((weatherByCoordinates_serviceResult: IforecastLocation)=> {
+            .subscribe((weatherByCoordinates_serviceResult: IforecastLocation) => {
                 this.weather = weatherByCoordinates_serviceResult.forecast.slice(0, 7);  // take 7 elements
             }, error => {
                 console.error(error);
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
     }
 
     getResponseByCityName(cityName: string): void {
-        var city = cityName;
+
         this.weatherApiService.getWeatherByName_service(cityName)
             .subscribe((getWeatherByName_serviceResult: IforecastLocation) => {
                 this.weather = getWeatherByName_serviceResult.forecast.slice(0, 7);
@@ -84,16 +84,21 @@ export class AppComponent implements OnInit {
     getHourlyAndDailyResponse(event: string) {
         this.getResponseByCityName(event);
         this.getResponseHourlyByCityName(event)
+        this.city = event;
+    }
+    
+    showCityName() {
+        return this.city
     }
 
-    nothing(cityName:string) {
-        return cityName
-    }
+
 }
 
 
 
-
+function showCityName() {
+    throw new Error('Function not implemented.');
+}
 // grodno - 53.669852, 23.822354
 // brest - 52.099743, 23.763865
 // vitebsk - 55.191999, 30.192833
