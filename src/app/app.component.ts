@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
     public city = "";
     public weather: any[] = [];
     public weatherHourly: any[] = [];
+    public checker: boolean = false;
 
     public time: string | undefined;
 
@@ -81,23 +82,33 @@ export class AppComponent implements OnInit {
             })
     }
 
+
     getHourlyAndDailyResponse(event: string) {
-        this.getResponseByCityName(event);
         this.getResponseHourlyByCityName(event)
         this.city = event;
+        this.getResponseByCityName(event);
+
     }
-    
+
+    public chekerFunc_1(){
+        if (this.weather.length !== 0 && this.weatherHourly.length !== 0){
+           return true
+        }
+        return false
+    };
+
+    public chekerFunc_2(){
+        if (this.weather.length !== 0 && this.weatherHourly.length !== 0){
+           return true
+        }
+        return false
+    };
+
+
     showCityName() {
         return this.city
     }
 
-
-}
-
-
-
-function showCityName() {
-    throw new Error('Function not implemented.');
 }
 // grodno - 53.669852, 23.822354
 // brest - 52.099743, 23.763865

@@ -15,6 +15,8 @@ export class BurgerMenuComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter<string>();
 
+  citiesArray: string[] = ['Hrodno', 'Brest', 'Minsk'];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -25,14 +27,33 @@ export class BurgerMenuComponent implements OnInit {
       console.log('toggle:', this.toggle.nativeElement)
   }
 
-  toggleClick(event: any, firstValue: any, secondValue: any,) {
+  toggleClick(event: any, firstValue: any, secondValue: any) {
     console.log(firstValue);
     firstValue.classList.toggle('active');
     secondValue.classList.toggle('active');
   }
 
-  getNameOfCity(a: string) {
-    console.log(a);
-    this.newItemEvent.emit(a);
+  toggleActiveClass(burgerClass: any, first: any, second: any, third: any, fourth: any) {
+    burgerClass.classList.toggle('active');
+    first.classList.toggle('active');
+    second.classList.toggle('active');
+    third.classList.toggle('active');
+    fourth.classList.toggle('active');
   }
+
+
+  name: string = "";
+
+  getNameOfCity(city: any): void {
+    console.log(city);
+    let cityName = document.getElementById(city);
+    this.name = city
+    this.newItemEvent.emit(city);
+
+    console.log(cityName)
+
+  }
+
+
+
 }

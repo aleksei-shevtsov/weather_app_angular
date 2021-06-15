@@ -1,11 +1,8 @@
 .time {
   font-family: "Bebas Neue";
   font-size: 9rem;
-  top: -10%;
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 43%)
+  position: relative;
+  text-align: center;
 }
 
 .header_burger {
@@ -138,7 +135,7 @@
   border-radius: 15px;
   margin: 0 5% 0 5%;
   display: inline-block;
-  transform: translate(0%, 90%);
+  transform: translate(0%, 60%);
   position: relative;
 }
 
@@ -154,7 +151,7 @@
   border-radius: 15px;
   margin: 2em 5% 13em 5%;
   display: inline-block;
-  transform: translate(0%, 25%);
+  transform: translate(0%, 20%);
   position: relative;
 }
 

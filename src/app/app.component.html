@@ -8,7 +8,7 @@
     </div>
 
     <div class="grid-container">
-        <div class="container grid-item1">
+        <div *ngIf="chekerFunc_1()" class="container grid-item1">
             <p *ngIf="weather.length == 0">Searching...</p>
             <div *ngIf="weather.length > 0">
                 <table class="first-table">
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="container_two grid-item2">
+        <div *ngIf="chekerFunc_2()" class="container_two grid-item2">
             <p *ngIf="weather.length == 0">Searching...</p>
             <div *ngIf="weather.length > 0">
                 <table class="second-table">
