@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { WeatherApiService } from '../services/weather-api.service';
 import { Output, EventEmitter } from '@angular/core';
 
@@ -7,7 +7,7 @@ import { Output, EventEmitter } from '@angular/core';
   templateUrl: './burger-menu.component.html',
   styleUrls: ['./burger-menu.component.css']
 })
-export class BurgerMenuComponent implements OnInit {
+export class BurgerMenuComponent implements AfterViewInit  {
 
   @ViewChild("toggle", { read: ElementRef })
   toggle: ElementRef | undefined;
@@ -18,9 +18,6 @@ export class BurgerMenuComponent implements OnInit {
   citiesArray: string[] = ['Hrodno', 'Brest', 'Minsk'];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit() {
     if (this.toggle != undefined)

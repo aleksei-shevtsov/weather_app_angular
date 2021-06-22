@@ -82,8 +82,14 @@
             "browserTarget": "weather-app:build"
           }
         },
-        "lint":{
-          "builder": "@angular-eslint/builder:lint"
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.component.html"
+            ]
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
