@@ -11,7 +11,6 @@ export class BurgerMenuComponent implements AfterViewInit  {
 
   @ViewChild("toggle", { read: ElementRef })
   toggle: ElementRef | undefined;
-  selectedItem: any;
 
   @Output() newItemEvent = new EventEmitter<string>();
 
@@ -30,13 +29,13 @@ export class BurgerMenuComponent implements AfterViewInit  {
     secondValue.classList.toggle('active');
   }
 
-  toggleActiveClass(burgerClass: any, first: any, second: any, third: any, fourth: any) {
-    burgerClass.classList.toggle('active');
-    first.classList.toggle('active');
-    second.classList.toggle('active');
-    third.classList.toggle('active');
-    fourth.classList.toggle('active');
-  }
+  // toggleActiveClass(burgerClass: any, first: any, second: any, third: any, fourth: any) {
+  //   burgerClass.classList.toggle('active');
+  //   first.classList.toggle('active');
+  //   second.classList.toggle('active');
+  //   third.classList.toggle('active');
+  //   fourth.classList.toggle('active');
+  // }
 
 
   name: string = "";

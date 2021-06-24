@@ -2,12 +2,12 @@
     <div (click)="toggleClick($event, toggleMenu, toggleBurger1)" class="header_burger" #toggleBurger1>
         <span></span>
     </div>
-    <div (click)="toggleActiveClass(toggleBurger, first, second, third, fourth)" class="burger" #toggleBurger>
+    <!-- <div (click)="toggleActiveClass(toggleBurger, first, second, third, fourth)" class="burger" #toggleBurger>
         <span class="burger__line burger__line_first" #first></span>
         <span class="burger__line burger__line_second" #second></span>
         <span class="burger__line burger__line_third" #third></span>
         <span class="burger__line burger__line_fourth" #fourth></span>
-    </div>
+    </div>  -->
 
     <nav class="header_menu" #toggleMenu>
         <ul class="header_list">
@@ -16,5 +16,12 @@
                     class="header_link">{{item}}</span>
             </li>
         </ul>
+        <ul>
+            <li>
+                <app-create-user></app-create-user>
+            </li>
+        </ul>
     </nav>
+
+
 </div>

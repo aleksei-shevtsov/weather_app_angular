@@ -13,6 +13,7 @@ import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -29,13 +30,10 @@ export class AppComponent implements OnInit {
     public time: string | undefined;
 
 // CRUD - operators variables
-    users: Array<User> = [];
     editedUser: User|null = null;
     isNewRecord: boolean = false;
 
-// Reactive forms
-     login: string = "";
-     password: string = "";
+
 
     public constructor(private http: HttpClient, private weatherApiService: WeatherApiService, public userService: UserService) {
 
@@ -57,35 +55,6 @@ export class AppComponent implements OnInit {
         }
     }
 
-    getUsers_component(): void{
-        let itemOfUsers: any;
-        this.userService.getUsers().subscribe((data)=> {
-            itemOfUsers = data
-            console.log("getUsers action - ", itemOfUsers)
-            this.users = data;
-        })
-    }
-
-    createUser_component(): void {
-        this.userService.createUser({login: this.login, password: this.password}).subscribe((x:any)=>  {
-            console.log("createUser action - ",x)
-            this.userService.getUsers().subscribe((x)=> console.log('getUsers in CreateUsers',x))})
-    }
-
-    editUser_component():void {
-    }
-
-    deleteUser_component():void {
-        this.userService.getUsers().subscribe((x)=>console.log('getter',x))
-        this.userService.deleteUser(1)
-        .subscribe(data => {
-            this.users = this.users.filter(item => item.id !==1);
-            console.log('Post deleted successfully!');
-        this.userService.getUsers().subscribe((x)=>console.log('getter',x))
-
-            console.log(data)
-        })
-    }
 
 
 

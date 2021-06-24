@@ -2,38 +2,12 @@
 
     <app-burger-menu (newItemEvent)="getHourlyAndDailyResponse($event)"></app-burger-menu>
 
-    <div>
-        <button (click)="createUser_component()">Create user</button>
-        
-    </div>
-
-    <div>
-        <button (click)="getUsers_component()">Get users</button>
-        
-    </div>
-
-    <!-- FORM -->
-
-        <label>login</label>
-        <input class = "form-control" name = "login" [(ngModel)]= "login" />
-
-        <label>password</label>
-        <input class = "form-control" name = "password" [(ngModel)]= "password" />
-
-        <div class="form-group">
-            <button (click)="createUser_component()" class="btn btn-default">
-                Create
-            </button>
-        </div>
-
-    <!-- FORM -->
-
     <div class="time">
         {{time}}
     </div>
 
     <div class="grid-container">
-        <div *ngIf="chekerFunc_1()" class="container grid-item1">
+        <div *ngIf="chekerFunc_1()" class="container_one grid-item1">
             <p *ngIf="weather.length === 0">Searching...</p>
             <div *ngIf="weather.length > 0">
                 <table class="first-table">

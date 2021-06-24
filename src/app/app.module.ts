@@ -10,7 +10,7 @@ import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './services/in-memory-data.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule }   from '@angular/forms';
-import { PopUpComponent } from './pop-up/pop-up.component';
+import { CreateUserComponent } from './createUser/create-user.component';
 
 
 
@@ -19,7 +19,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
         AppComponent,
         MomentPipe,
         BurgerMenuComponent,
-        PopUpComponent,
+        CreateUserComponent,
     ],
     imports: [
         BrowserModule,
@@ -33,7 +33,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
             passThruUnknownUrl: true }
           )
     ],
-    providers: [],
+    providers: [AppComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

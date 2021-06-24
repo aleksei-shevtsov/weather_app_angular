@@ -1,0 +1,69 @@
+.formPopUp {
+    display: none;
+}
+
+.showPopUp {
+    display: block!important;
+}
+
+.form-group {
+    margin-top: 10px;
+}
+
+#btn_createUser {
+    position: absolute;
+    line-height: 1.7;
+    bottom: 32px;
+    right: 19px;
+    width: 154px;
+}
+
+#content_of_btn_createUser {
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    text-align: center;
+    line-height: 1;
+    position: absolute;
+    width: 350px;
+    z-index: 99;
+    background-color: #fff;
+    opacity: 0.9;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 17px 27px;
+}
+
+.background_createUser {
+    background-color: wheat;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    overflow: hidden
+}
+
+input.ng-touched.ng-invalid {
+    border: solid red 2px;
+}
+
+input.ng-touched.ng-valid {
+    border: solid green 2px;
+}
+
+.password_indent {
+    margin-bottom: 25px;
+}
+
+#content_of_btn_createUser div .button_indent {
+    margin-bottom: 15px;
+}
+
+#content_of_btn_createUser .x_button_indent {
+    font-size: 1.25rem;
+}
+
