@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { WeatherApiService } from '../services/weather-api.service';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -18,12 +17,12 @@ export class BurgerMenuComponent implements AfterViewInit  {
 
   constructor() { }
 
-  ngAfterViewInit() {
+  ngAfterViewInit():void {
     if (this.toggle != undefined)
       console.log('toggle:', this.toggle.nativeElement)
   }
 
-  toggleClick(event: any, firstValue: any, secondValue: any) {
+  toggleClick(firstValue: HTMLElement, secondValue: HTMLElement):void {
     console.log(firstValue);
     firstValue.classList.toggle('active');
     secondValue.classList.toggle('active');

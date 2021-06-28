@@ -1,17 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { WeatherApiService } from './services/weather-api.service'
-import { Observable } from 'rxjs';
-import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
 import { IforecastLocation } from './model/IforecastLocation';
 import { Iforecast } from './model/Iforecast';
 import { User } from './model/User';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data.service';
 import { UserService } from './services/user.service';
-import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -29,8 +22,8 @@ export class AppComponent implements OnInit {
     public checker: boolean = false;
     public time: string | undefined;
 
-// CRUD - operators variables
-    editedUser: User|null = null;
+    // CRUD - operators variables
+    editedUser: User | null = null;
     isNewRecord: boolean = false;
 
 
@@ -39,9 +32,9 @@ export class AppComponent implements OnInit {
 
         this.userService.getUsers().subscribe((x: User[]) => console.log('Armagedon - ', x));
 
-            setInterval(() => {
-                this.time = new Date().toLocaleTimeString('ru-Ru');
-            }, 1000)
+        setInterval(() => {
+            this.time = new Date().toLocaleTimeString('ru-Ru');
+        }, 1000)
     }
 
     public ngOnInit() {
@@ -56,10 +49,7 @@ export class AppComponent implements OnInit {
     }
 
 
-
-
-
-    getCurrentHourlyWeather(): void {
+    private getCurrentHourlyWeather(): void {
         const startDate: number = new Date().getTime();
         const finalDate: number = startDate + (12 * 60 * 60 * 1000);
         this.weatherHourly = (this.weatherHourly as Iforecast[]).filter((v) => (
@@ -67,7 +57,7 @@ export class AppComponent implements OnInit {
 
     }
 
-    getWeatherByCoordinates_component(coordinates: GeolocationCoordinates): void {
+    private getWeatherByCoordinates_component(coordinates: GeolocationCoordinates): void {
         this.weatherApiService.getWeatherByCoordinates_service(coordinates)
             .subscribe((weatherByCoordinates_serviceResult: IforecastLocation) => {
                 this.weather = weatherByCoordinates_serviceResult.forecast.slice(0, 7);  // take 7 elements
@@ -78,7 +68,7 @@ export class AppComponent implements OnInit {
             });
     }
 
-    getWeatherHourlyByCoordinates_component(coordinates: GeolocationCoordinates): void {
+    private getWeatherHourlyByCoordinates_component(coordinates: GeolocationCoordinates): void {
         this.weatherApiService.getWeatherHourlyByCoordinates_service(coordinates)
             .subscribe(weatherHourlyByCoordinates_serviceResult => {
                 this.weatherHourly = weatherHourlyByCoordinates_serviceResult.forecast;
@@ -88,7 +78,7 @@ export class AppComponent implements OnInit {
             });
     }
 
-    getResponseHourlyByCityName(cityName: string): void {
+    private getResponseHourlyByCityName(cityName: string): void {
         this.weatherApiService.getWeatherHourlyByName_service(cityName)
             .subscribe((getWeatherHourlyByName_serviceResult: IforecastLocation) => {
                 this.weatherHourly = getWeatherHourlyByName_serviceResult.forecast;
@@ -96,7 +86,7 @@ export class AppComponent implements OnInit {
             })
     }
 
-    getResponseByCityName(cityName: string): void {
+    private getResponseByCityName(cityName: string): void {
         console.log('this is cityname', this.city)
         this.weatherApiService.getWeatherByName_service(cityName)
             .subscribe((getWeatherByName_serviceResult: IforecastLocation) => {
@@ -104,7 +94,7 @@ export class AppComponent implements OnInit {
             })
     }
 
-    getHourlyAndDailyResponse(event: string) {
+    public getHourlyAndDailyResponse(event: string) {
         this.getResponseHourlyByCityName(event);
         this.city = event;
         this.getResponseByCityName(event);
@@ -124,8 +114,7 @@ export class AppComponent implements OnInit {
         return false;
     };
 
-
-    showCityName() {
+    public showCityName() {
         if (this.city === "") {
             return this.getStateName;
         }

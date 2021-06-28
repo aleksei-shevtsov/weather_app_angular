@@ -11,27 +11,56 @@
 
 /* <section> start Animation of burger  */
 
-  .header_burger.active {
-    height: 65px;
-  }
+.header_burger.active {
+  height: 65px;
+}
 
-  .header_burger.active:before {
-    transform: rotate(45deg);
-    top: 29px;
-    background-color: wheat;
-    transition: all 0.7s ease 0s;
-  }
+/* start first part of animation */
 
-  .header_burger.active:after {
-    transform: rotate(-45deg);
-    bottom: 14px;
-    background-color: wheat;
-    transition: all 0.7s ease 0s;
-  }
+.header_burger.active:before {
+  transform: rotate(45deg);
+  top: 29px;
+  background-color: wheat;
+  transition: all 0.7s ease 0s;
+}
 
-  .header_burger.active span {
-    transform: scale(0);
-  }
+.header_burger.active:after {
+  transform: rotate(-45deg);
+  bottom: 14px;
+  background-color: wheat;
+  transition: all 0.7s ease 0s;
+}
+
+.header_burger.active span {
+  transition: all 0.3s ease 0s;
+  transform: scale(0);
+}
+
+/* finish first part of animation */
+
+/* start second part of animation */
+
+.header_burger:before {
+  transform: rotate(0deg);
+  top: 29px;
+  background-color: wheat;
+  transition: all 0.7s ease 0s;
+}
+
+.header_burger:after {
+  transform: rotate(0deg);
+  bottom: 14px;
+  background-color: wheat;
+  transition: all 0.7s ease 0s;
+}
+
+.header_burger span {
+  transition: all 0.9s ease 0s;
+  transform: scale(1);
+}
+
+
+/* finish second part of animation */
 
 /* <section> finish Animation of burger */
 
@@ -43,8 +72,6 @@
   height: 2px;
   top: 14px;
 }
-
-
 
 .header_burger:before, .header_burger:after {
   content: '';
@@ -84,6 +111,7 @@
 }
 
 /*<start section sidebar showing>*/
+
 /* 
   .header_menu.active {
     animation-name: showSidebar;
@@ -98,7 +126,7 @@
     }
   } */
 
-  /* .header_menu {
+/* .header_menu {
     animation-name: hideSidebar;
   }
 
@@ -112,7 +140,6 @@
   } */
 
 /*<finish section sidebar showing>*/
-
 
 .header_list li {
   list-style: none;
@@ -153,7 +180,7 @@
   font-weight: bold;
 }
 
-.header_menu.active .form{
+.header_menu.active .form {
   position: absolute;
   top: 25%;
   right: 37px;
@@ -164,7 +191,7 @@
 
 /* <start section burger>*/
 
-  /* .burger {
+/* .burger {
     width: 120px;
     height: 80px;
     cursor: pointer;
@@ -194,7 +221,8 @@
     bottom: 0;
   } */
 
-  /*<start section animation>*/
+/*<start section animation>*/
+
 /* 
     .burger__line_first.active, .burger__line_fourth.active {
       opacity: 0;
@@ -210,6 +238,6 @@
       opacity: 1;
     } */
 
-  /*<finish section animation>*/
+/*<finish section animation>*/
 
-/* <finish section burger>*/  
+/* <finish section burger>*/

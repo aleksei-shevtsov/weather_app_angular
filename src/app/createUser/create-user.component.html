@@ -1,7 +1,7 @@
 <!-- FORM -->
 <button (click)="enterCreateUser()" class="btn btn-outline-info btn-block" id="btn_createUser">Register</button>
 <div *ngIf="toggle" class="background_createUser">
-    <form [formGroup]="myForm" novalidate (ngSubmit)="submit()" id="content_of_btn_createUser">
+    <form id="content_of_btn_createUser" [formGroup]="myForm" novalidate (ngSubmit)="submit()">
 
         <div class="form-group">
             <label>login</label>
@@ -14,20 +14,21 @@
 
         <div class="form-group">
             <label>password</label>
-            <input class="form-control password_indent" name="password" formControlName="userPassword" />
+            <input class="form-control" name="password" formControlName="userPassword" />
             <div class="alert alert-danger"
                 *ngIf="myForm.controls['userPassword'].invalid && myForm.controls['userPassword'].touched">
                 Не указан пароль
             </div>
         </div>
+
         <span style="color:green">{{response}}</span>
+
         <div>
-            <button [disabled]="myForm.invalid" (click)="createUser_Component()" type="button"
+            <button [disabled]="myForm.invalid" (click)="createUser_Component()" type="submit"
                 class="btn btn-primary btn-lg button_indent">
                 Create
             </button>
         </div>
-
 
         <button type="button" class="btn btn-outline-danger x_button_indent"
             (click)="cancelCreateUser()">Cancel</button>

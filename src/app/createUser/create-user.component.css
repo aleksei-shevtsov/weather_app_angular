@@ -44,8 +44,23 @@
     top: 0;
     left: 0;
     z-index: 99;
-    overflow: hidden
+    overflow: hidden;
+    animation-duration: 3s;
+    animation-name: slidein;
 }
+
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+  
 
 input.ng-touched.ng-invalid {
     border: solid red 2px;
@@ -53,10 +68,6 @@ input.ng-touched.ng-invalid {
 
 input.ng-touched.ng-valid {
     border: solid green 2px;
-}
-
-.password_indent {
-    margin-bottom: 25px;
 }
 
 #content_of_btn_createUser div .button_indent {
